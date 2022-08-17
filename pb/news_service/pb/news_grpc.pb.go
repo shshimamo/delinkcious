@@ -39,21 +39,19 @@ func (c *newsClient) GetNews(ctx context.Context, in *GetNewsRequest, opts ...gr
 }
 
 // NewsServer is the server API for News service.
-// All implementations must embed UnimplementedNewsServer
+// All implementations should embed UnimplementedNewsServer
 // for forward compatibility
 type NewsServer interface {
 	GetNews(context.Context, *GetNewsRequest) (*GetNewsResponse, error)
-	mustEmbedUnimplementedNewsServer()
 }
 
-// UnimplementedNewsServer must be embedded to have forward compatible implementations.
+// UnimplementedNewsServer should be embedded to have forward compatible implementations.
 type UnimplementedNewsServer struct {
 }
 
 func (UnimplementedNewsServer) GetNews(context.Context, *GetNewsRequest) (*GetNewsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetNews not implemented")
 }
-func (UnimplementedNewsServer) mustEmbedUnimplementedNewsServer() {}
 
 // UnsafeNewsServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to NewsServer will
