@@ -2,22 +2,24 @@ package service
 
 import (
 	"fmt"
-	httptransport "github.com/go-kit/kit/transport/http"
-	"github.com/gorilla/mux"
-	"github.com/opentracing/opentracing-go"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/shshimamo/delinkcious/pkg/db_util"
-	"github.com/shshimamo/delinkcious/pkg/link_manager_events"
-	"github.com/shshimamo/delinkcious/pkg/log"
-	om "github.com/shshimamo/delinkcious/pkg/object_model"
-	"github.com/uber/jaeger-client-go"
 	"io"
 	"net/http"
 	"os"
 	"strconv"
 
-	lm "github.com/shshimamo/delinkcious/pkg/link_manager"
+	httptransport "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
+	"github.com/opentracing/opentracing-go"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/uber/jaeger-client-go"
 	jeagerconfig "github.com/uber/jaeger-client-go/config"
+
+	"github.com/shshimamo/delinkcious/pkg/db_util"
+	lm "github.com/shshimamo/delinkcious/pkg/link_manager"
+	"github.com/shshimamo/delinkcious/pkg/link_manager_events"
+	"github.com/shshimamo/delinkcious/pkg/log"
+	om "github.com/shshimamo/delinkcious/pkg/object_model"
+	sgm "github.com/shshimamo/delinkcious/pkg/social_graph_client"
 )
 
 type EventSink struct {

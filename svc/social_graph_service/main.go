@@ -1,4 +1,4 @@
-package service
+package main
 
 import (
 	"github.com/shshimamo/delinkcious/svc/social_graph_service/service"

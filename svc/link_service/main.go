@@ -1,4 +1,4 @@
-package link_service
+package main
 
 import (
 	"github.com/shshimamo/delinkcious/svc/link_service/service"
