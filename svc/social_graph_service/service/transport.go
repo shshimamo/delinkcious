@@ -78,6 +78,8 @@ func decodeGetFollowingRequest(_ context.Context, r *http.Request) (interface{},
 }
 
 func decodeGetFollowersRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	// link_managerサービス と social_graphサービスは共有シークレット123をお互いが持っていて、link_managerのリクエストのみ許可する
+	// link_managerサービスは pkg/social_graph_client/client.go を使ってリクエストを送る際に共有シークレットを Delinkcious-Caller-Token ヘッダーに設定する
 	if os.Getenv("DELINKCIOUS_MUTUAL_AUTH") != "false" {
 		token := r.Header["Delinkcious-Caller-Token"]
 		if len(token) == 0 || token[0] == "" {

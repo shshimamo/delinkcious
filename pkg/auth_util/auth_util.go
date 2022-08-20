@@ -6,6 +6,9 @@ import (
 	"os"
 )
 
+// secret.yaml の内容がマウントされる
+// $ echo -n "social-graph-manager: 123" | base64
+// => c29jaWFsLWdyYXBoLW1hbmFnZXI6IDEyMw==
 const callersFilename = "/etc/delinkcious/mutual-auth.yaml"
 
 var callersByName = map[string]string{}
