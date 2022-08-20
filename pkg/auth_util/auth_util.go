@@ -3,7 +3,6 @@ package auth_util
 import (
 	_ "github.com/lib/pq"
 	"gopkg.in/yaml.v3"
-	"io/ioutil"
 	"os"
 )
 
@@ -17,7 +16,7 @@ func init() {
 		return
 	}
 
-	data, err := ioutil.ReadFile(callersFilename)
+	data, err := os.ReadFile(callersFilename)
 	if err != nil {
 		panic(err)
 	}
